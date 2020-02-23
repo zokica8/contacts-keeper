@@ -1,0 +1,244 @@
+openapi: 3.0.1
+info:
+  title: contacts-keeper
+  description: Contacts Keeper API
+  version: "1.0"
+paths:
+  /api/users/{id}:
+    get:
+      summary: ""
+      description: ""
+      operationId: findUserById
+      parameters:
+      - name: id
+        in: path
+        description: the registered user's id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          description: the registered user, if ok 200 status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+    put:
+      summary: ""
+      description: ""
+      operationId: updateUser
+      parameters:
+      - name: id
+        in: path
+        description: the user's id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: the current user in the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        default:
+          description: the updated user with 200 status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+    delete:
+      summary: ""
+      description: ""
+      operationId: deleteUser
+      parameters:
+      - name: id
+        in: path
+        description: the current user's id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          description: deleted user from the server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+  /api/users:
+    post:
+      tags:
+      - register
+      summary: To register a user in the app
+      description: Registering a user to the Contacts Keeper Application
+      operationId: addUser
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        default:
+          content:
+            application/json: {}
+        400:
+          description: Invalid email that is already in the server
+        201:
+          description: User is registered and created as a resource in the server
+  /api/contacts/{user_id}:
+    get:
+      operationId: findByUser
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          description: findByUser default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+      security:
+      - BearerAuth: []
+  /api/contacts:
+    post:
+      operationId: addContact
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User''s contacts'
+        required: true
+      responses:
+        default:
+          description: addContact default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+      security:
+      - BearerAuth: []
+  /api/contacts/{id}:
+    put:
+      operationId: updateContact
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User''s contacts'
+        required: true
+      responses:
+        default:
+          description: updateContact default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+      security:
+      - BearerAuth: []
+    delete:
+      operationId: deleteContact
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        default:
+          description: deleteContact default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Object'
+      security:
+      - BearerAuth: []
+components:
+  schemas:
+    Object:
+      type: object
+    User's contacts:
+      required:
+      - email
+      - firstName
+      - lastName
+      - phone
+      - type
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        first-name:
+          minLength: 1
+          type: string
+        last-name:
+          minLength: 1
+          type: string
+        email:
+          minLength: 1
+          type: string
+        phone:
+          minLength: 1
+          type: string
+          format: \+(.+)[0-9]+
+        type:
+          minLength: 1
+          type: string
+      description: User's added contacts
+    User:
+      required:
+      - email
+      - firstName
+      - lastName
+      - password
+      type: object
+      properties:
+        date-registered:
+          type: string
+          format: date
+        id:
+          type: integer
+          format: int64
+        first-name:
+          minLength: 1
+          type: string
+        last-name:
+          minLength: 1
+          type: string
+        email:
+          minLength: 1
+          type: string
+          format: ^(.+)@(.+)$
+        password:
+          minLength: 10
+          type: string
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/User''s contacts'
+      description: Contacts Keeper registered User
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: jwt

@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: contacts.keeper
+---
+testFramework: junit
+sourceLanguage: java
