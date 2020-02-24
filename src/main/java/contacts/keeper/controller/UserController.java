@@ -40,7 +40,7 @@ public class UserController {
 	}
 
 	@Operation(summary = "To register a user in the app", description = "Registering a user to the Contacts Keeper Application")
-	@ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(type = "User")))
+	@ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(type = "User")), description = "A validated user registered")
 	@ApiResponse(responseCode = "400", description = "Invalid email that is already in the server")
 	@ApiResponse(responseCode = "201", description = "User is registered and created as a resource in the server")
 	@Tag(name = "register")

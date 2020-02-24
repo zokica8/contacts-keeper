@@ -1,7 +1,5 @@
 package contacts.keeper.controller;
 
-import contacts.keeper.model.User;
-import contacts.keeper.service.UserService;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;

@@ -28,7 +28,7 @@ public class ContactsController {
 
     @Operation(summary = "Find all contacts for a specific user", description = "Resource where all user's contacts are found")
     @Tag(name = "Contacts by User")
-    @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(type = "Contacts")))
+    @ApiResponse(description = "Contacts for a specific user", content = @Content(mediaType = "application/json", schema = @Schema(type = "Contacts")))
     @ApiResponse(responseCode = "200", description = "Contacts for all users found")
     @ApiResponse(responseCode = "404", description = "Resource not found")
     @Get("/{user_id}")
@@ -39,7 +39,7 @@ public class ContactsController {
 
     @Operation(summary = "Add contact for a specific user", description = "Add contact for a specific user")
     @Tag(name = "Contacts by User")
-    @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(type = "Contacts")))
+    @ApiResponse(description = "Add contact", content = @Content(mediaType = "application/json", schema = @Schema(type = "Contacts")))
     @ApiResponse(responseCode = "201", description = "Contact successfully added")
     @ApiResponse(responseCode = "404", description = "Resource not found")
     @Post
@@ -50,7 +50,7 @@ public class ContactsController {
 
     @Operation(summary = "Update existing contact for a specific user", description = "Update existing contact for a specific user")
     @Tag(name = "Contacts by User")
-    @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(type = "Contacts")))
+    @ApiResponse(description = "Update contact", content = @Content(mediaType = "application/json", schema = @Schema(type = "Contacts")))
     @ApiResponse(responseCode = "200", description = "Contact successfully updated")
     @ApiResponse(responseCode = "404", description = "Resource not found")
     @Put("/{id}")
@@ -61,7 +61,7 @@ public class ContactsController {
 
     @Operation(summary = "Delete contact for a specific user", description = "Delete contact for a specific user")
     @Tag(name = "Contacts by User")
-    @ApiResponse(content = @Content(mediaType = "application/json", schema = @Schema(type = "Contacts")))
+    @ApiResponse(description = "Delete contact", content = @Content(mediaType = "application/json", schema = @Schema(type = "Contacts")))
     @ApiResponse(responseCode = "200", description = "Contact successfully deleted")
     @ApiResponse(responseCode = "404", description = "Resource not found")
     @Delete("/{id}")

@@ -4,15 +4,12 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.data.annotation.*;
-import io.micronaut.data.jdbc.annotation.ColumnTransformer;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
