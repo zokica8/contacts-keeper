@@ -16,7 +16,7 @@
 		<exec.mainClass>contacts.keeper.Application</exec.mainClass>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
-		<mysql.version>8.0.19</mysql.version>
+		<mysql.version>8.0.28</mysql.version>
 		<spring.security.version>5.2.2.RELEASE</spring.security.version>
 	</properties>
 	<repositories>
